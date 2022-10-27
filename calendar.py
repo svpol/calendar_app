@@ -64,8 +64,14 @@ class Calendar:
             elif i + 1 == len(calendar) - 1:
                 available_slots.append([calendar[c], calendar[i+1]])
         for slot in available_slots:
-            time_start = str(slot[0] // 60) + ':' + str(slot[0] % 60)
-            time_end = str(slot[1] // 60) + ':' + str(slot[1] % 60)
+            minute_chars_start = str(slot[0] % 60)
+            if minute_chars_start in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']:
+                minute_chars_start = '0' + minute_chars_start
+            minute_chars_end = str(slot[1] % 60)
+            if minute_chars_end in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']:
+                minute_chars_end = '0' + minute_chars_end
+            time_start = str(slot[0] // 60) + ':' + minute_chars_start
+            time_end = str(slot[1] // 60) + ':' + minute_chars_end
             timeslots.append([time_start, time_end])
         return timeslots
 
@@ -87,3 +93,9 @@ class Calendar:
             if i in calendar:
                 calendar.remove(i)
         return calendar
+
+    @staticmethod
+    def get_common_timeslots(calendars):
+        minute_intervals = list(set.intersection(*map(set, calendars)))
+        timeslots = Calendar.get_available_timeslots(minute_intervals)
+        return timeslots
