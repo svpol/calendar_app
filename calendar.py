@@ -15,13 +15,22 @@ class Calendar:
 
     @staticmethod
     def book_timeslot(calendar, time_start, time_end):
-        available_timeslots = []
-        slot_before = [calendar[0], time(time_start[0])]
-        slot_after = [time(time_end[1]), calendar[1]]
+        updated_calendar = []
+        time_start_time = time(time_start[0], time_start[1])
+        time_end_time = time(time_end[0], time_end[1])
+        if time_start_time > calendar[0]:
+            slot_before = [calendar[0], time_start_time]
+            slot_after = [time_end_time, calendar[1]]
+
+        pass
 
 
 if __name__ == '__main__':
 
     wl = Calendar.get_working_time([[8, 50], [17, 50]])
-    # print(Calendar.show_working_time([[8, 50], [19, 0]]))
     print(*wl)
+
+    slotted = Calendar.book_timeslot(wl, [10, 30], [11, 30])
+
+    for i in slotted:
+        print(*i)
