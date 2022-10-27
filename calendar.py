@@ -96,6 +96,11 @@ class Calendar:
 
     @staticmethod
     def get_common_timeslots(calendars):
+        """
+        Gets available timeslots common for all of the employees.
+        :param calendars: A list of lists with employees' calenders.
+        :return: A list of lists with time intervals available for all employees.
+        """
         minute_intervals = list(set.intersection(*map(set, calendars)))
         timeslots = Calendar.get_available_timeslots(minute_intervals)
         return timeslots
