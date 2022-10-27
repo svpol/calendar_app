@@ -15,7 +15,10 @@ if __name__ == '__main__':
 
     mpopova = Employee('Maria Popova', 'accountant', 'Moscow', [[8, 50], [17, 30]])
     print(*mpopova.working_time)
-    print(mpopova.calendar)
-    mpopova.calendar = Calendar.book_timeslot(mpopova.calendar, [8, 50], [10, 0])
-    print(mpopova.calendar)
+    # print(mpopova.calendar)
+    mpopova.calendar = Calendar.book_timeslot(mpopova.calendar, [9, 00], [9, 30])
+    # print(mpopova.calendar)
+    print(Calendar.get_available_timeslots(mpopova.calendar))
+    mpopova.calendar = Calendar.book_timeslot(mpopova.calendar, [11, 00], [11, 30])
+    print(Calendar.get_available_timeslots(mpopova.calendar))
 

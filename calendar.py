@@ -25,7 +25,15 @@ class Calendar:
 
     @staticmethod
     def get_available_timeslots(calendar):
-        pass
+        available_slots = []
+        c = 0
+        for i in range(len(calendar) - 1):
+            if calendar[i + 1] - calendar[i] > 1:
+                available_slots.append([calendar[c], calendar[i]])
+                c = i + 1
+            elif i + 1 == len(calendar) - 1:
+                available_slots.append([calendar[c], calendar[i+1]])
+        return available_slots
 
     @staticmethod
     def book_timeslot(calendar, time_start, time_end):
@@ -44,10 +52,3 @@ if __name__ == '__main__':
 
     wl = Calendar.get_working_time([[8, 50], [17, 50]])
     print(*wl)
-
-    # slotted = Calendar.book_timeslot(wl, [10, 30], [11, 30])
-    #
-    # for i in slotted:
-    #     print(*i)
-
-    print(DAYTIME)
