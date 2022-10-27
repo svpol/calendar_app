@@ -2,6 +2,9 @@ from calendar import Calendar
 
 
 class Employee:
+    """
+    The class stores info about each employee.
+    """
 
     def __init__(self, name, role, location, working_time_list):
         self.name = name
@@ -21,4 +24,5 @@ if __name__ == '__main__':
     print(Calendar.get_available_timeslots(mpopova.calendar))
     mpopova.calendar = Calendar.book_timeslot(mpopova.calendar, [11, 00], [11, 30])
     print(Calendar.get_available_timeslots(mpopova.calendar))
+    # print(mpopova.calendar)
 
