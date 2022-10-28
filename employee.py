@@ -29,15 +29,6 @@ class Employee:
 
 if __name__ == '__main__':
 
-    test_user = Employee('test', 'test role', 'porto', [[9, 0], [9, 50]])
-    # print(test_user.working_time)
-    print(test_user.calendar)
-    test_user.calendar = Calendar.book_timeslot(test_user.calendar, [9, 10], [9, 30])
-    # test_user.calendar = Calendar.book_timeslot(test_user.calendar, [9, 40], [9, 55])
-    print(test_user.calendar)
-    # print(Calendar.get_available_timeslots(test_user.calendar))
-
-
     mpopova = Employee('Maria Popova', 'accountant', 'Moscow', [[8, 50], [17, 30]])
     # DataBaseEmulation.db_write('Maria Popova')
     # Then mpopova object may be removed and the data about this employee should be fetched from the DB.
