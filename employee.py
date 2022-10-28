@@ -10,6 +10,16 @@ class Employee:
     """
 
     def __init__(self, name, role, location, working_time_list):
+        """
+        Initializes a class object.
+        :param name: string, employee's name.
+        :param role: string, employee's role.
+        :param location: string, employee's residence city.
+        :param working_time_list: list, employee's working hours in the format: [[H, M], [H, M]].
+        The first nested list is for the hours and minutes of working day beginning,
+        The second nested list is for the hours and minutes of working day end, e.g.:
+        For standard working hours 9:00 - 18:00 working_time list is [[9, 0], [18, 0]].
+        """
         self.name = name
         self.role = role
         self.location = location
@@ -18,6 +28,15 @@ class Employee:
 
 
 if __name__ == '__main__':
+
+    test_user = Employee('test', 'test role', 'porto', [[9, 0], [9, 50]])
+    # print(test_user.working_time)
+    print(test_user.calendar)
+    test_user.calendar = Calendar.book_timeslot(test_user.calendar, [9, 10], [9, 30])
+    # test_user.calendar = Calendar.book_timeslot(test_user.calendar, [9, 40], [9, 55])
+    print(test_user.calendar)
+    # print(Calendar.get_available_timeslots(test_user.calendar))
+
 
     mpopova = Employee('Maria Popova', 'accountant', 'Moscow', [[8, 50], [17, 30]])
     # DataBaseEmulation.db_write('Maria Popova')
